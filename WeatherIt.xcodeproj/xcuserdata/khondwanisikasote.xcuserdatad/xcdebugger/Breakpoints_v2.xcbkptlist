@@ -7,80 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4897ACF6-A08B-44EA-A5BF-207E6E55AA7F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherIt/Views/WeatherItView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "4897ACF6-A08B-44EA-A5BF-207E6E55AA7F - 7af24789c076ca77"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #2 @Sendable () async -&gt; () in WeatherIt.WeatherItView.body.getter : some"
-                  moduleName = "WeatherIt.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/khondwanisikasote/Documents/Interviews/DVT/WeatherIt/WeatherIt/Views/WeatherItView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25">
-               </Location>
-               <Location
-                  uuid = "4897ACF6-A08B-44EA-A5BF-207E6E55AA7F - 346d02ad61e4588"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for closure #2 @Sendable () async -&gt; () in WeatherIt.WeatherItView.body.getter : some"
-                  moduleName = "WeatherIt.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/khondwanisikasote/Documents/Interviews/DVT/WeatherIt/WeatherIt/Views/WeatherItView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25">
-               </Location>
-               <Location
-                  uuid = "4897ACF6-A08B-44EA-A5BF-207E6E55AA7F - ebfd8deca3a98e75"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #2 @Sendable () async -&gt; () in WeatherIt.WeatherItView.body.getter : some"
-                  moduleName = "WeatherIt.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/khondwanisikasote/Documents/Interviews/DVT/WeatherIt/WeatherIt/Views/WeatherItView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25">
-               </Location>
-               <Location
-                  uuid = "4897ACF6-A08B-44EA-A5BF-207E6E55AA7F - a37e691ef2bcec74"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for closure #2 @Sendable () async -&gt; () in WeatherIt.WeatherItView.body.getter : some"
-                  moduleName = "WeatherIt.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/khondwanisikasote/Documents/Interviews/DVT/WeatherIt/WeatherIt/Views/WeatherItView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "25"
-                  endingLineNumber = "25">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "20B46059-5E46-415C-AF50-7380257C09A2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -88,8 +14,8 @@
             filePath = "WeatherIt/Clients/WeatherClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "fetchWeatherByCityName(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -98,7 +24,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0DDA7537-5932-4D41-AEFD-E410ACF7FB00"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeatherIt/Services/LocationService.swift"
@@ -107,6 +33,22 @@
             startingLineNumber = "46"
             endingLineNumber = "46"
             landmarkName = "getCurrentLocation()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E214E47F-C8D3-405C-9460-B778C283D68D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherIt/ViewModels/WeatherItViewModule.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "getForecastWeather()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -14,9 +14,19 @@ enum APIError: Error {
 	case decodingError
 }
 
-struct WeatherClient {
+class WeatherClient {
+	private var baseUrl: URL
+	
+	init(baseUrl: URL) {
+		self.baseUrl = baseUrl
+	}
+	
 	func fetchCurrentWeather(location: Location) async throws -> CurrentWeatherResponse? {
-		let (data,response) = try await URLSession.shared.data(from: APIManager.endPointURL(for: .currentWeatherByCoordinates(location.lat, location.lon)))
+		guard let url = URL(string: APIEndpoints.currentWeatherByCoordinates(location.lat, location.lon).path, relativeTo: baseUrl) else {
+			throw APIError.invalidURL
+		}
+		
+		let (data,response) = try await URLSession.shared.data(from: url)
 		
 		guard let response = response as? HTTPURLResponse else {
 			throw APIError.invalidRequest
@@ -34,7 +44,11 @@ struct WeatherClient {
 	}
 	
 	func fetchForecastWeather(location: Location) async throws -> ForecastWeatherResponse? {
-		let (data,response) = try await URLSession.shared.data(from: APIManager.endPointURL(for: .forecastWeatherByCoordinates(location.lat, location.lon)))
+		guard let url = URL(string: APIEndpoints.forecastWeatherByCoordinates(location.lat, location.lon).path, relativeTo: baseUrl) else {
+			throw APIError.invalidURL
+		}
+		
+		let (data,response) = try await URLSession.shared.data(from: url)
 		
 		guard let response = response as? HTTPURLResponse else {
 			throw APIError.invalidRequest
@@ -52,7 +66,11 @@ struct WeatherClient {
 	}
 	
 	func fetchWeatherByCityName(for cityName: String) async throws -> GeoCodingWeatherResponse? {
-		let (data,response) = try await URLSession.shared.data(from: APIManager.endPointURL(for: .weatherByCityName(cityName)))
+		guard let url = URL(string: APIEndpoints.weatherByCityName(cityName).path, relativeTo: baseUrl) else {
+			throw APIError.invalidURL
+		}
+		
+		let (data,response) = try await URLSession.shared.data(from: url)
 		
 		guard let response = response as? HTTPURLResponse else {
 			throw APIError.invalidRequest

@@ -9,9 +9,22 @@ import SwiftUI
 
 @main
 struct WeatherItApp: App {
+	// Themes
+	@StateObject var themesManager = ThemesManager()
+	//setup EnvironmentObject
+	@StateObject private var weatherItViewModule: WeatherItViewModule
+	//setup configuration
+	init() {
+		var configuration = Configuration()
+		let locationSerice = LocationService()
+		//Made it an environment object because It is a client that will be accesible on all screens.
+		let weatherClient = WeatherClient(baseUrl: configuration.environment.weatherBaseURL)
+		_weatherItViewModule = StateObject(wrappedValue: WeatherItViewModule(weatherClient: weatherClient, locationService: locationSerice))
+	}
+	
     var body: some Scene {
         WindowGroup {
-			WeatherItView()
+			WeatherItView().environmentObject(weatherItViewModule).environmentObject(themesManager)
         }
     }
 }

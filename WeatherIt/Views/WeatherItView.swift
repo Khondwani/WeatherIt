@@ -8,23 +8,22 @@
 import SwiftUI
 
 struct WeatherItView: View {
-	var weatherClient: WeatherClient = WeatherClient()
-	var locationService: LocationService = LocationService()
+	@EnvironmentObject private var themeManager: ThemesManager
+	@EnvironmentObject private var weatherItViewModule: WeatherItViewModule
+	
 	var body: some View {
 
 		VStack {
-			HeaderView(headerImage: "forest_sunny", temp: "25", title: "sunny")
-			CurrentWeatherView(minTemp: "25", currentTemp: "25", maxTemp: "25")
+			HeaderView(headerImage: themeManager.currentTheme.getImage(weather: weatherItViewModule.getCurrentWeatherType()), temp: weatherItViewModule.getCurrentTemp(), title: weatherItViewModule.getCurrentWeatherTitle())
+			CurrentWeatherView(minTemp: weatherItViewModule.getCurrentWeatherMinTemp(), currentTemp: weatherItViewModule.getCurrentTemp(), maxTemp: weatherItViewModule.getCurrentWeatherMaxTemp())
 			Divider().frame(height: 1).overlay(.white)
-			ForecastView().border(Color.red)
+			ForecastView()
 			
 			
-		}.background(Color.sunny).ignoresSafeArea(.all).task {
+		}.background(themeManager.currentTheme.getColor(weather: weatherItViewModule.currentWeather?.weather[0].main ?? WeatherType.Clear)).ignoresSafeArea(.all).task {
 			do {
-//				let weather = try await weatherClient.fetchWeatherByCityName(for:"Chililabombwe")
-				//Testing purposes
-				let weather = try await weatherClient.fetchForecastWeather(location: locationService.getCurrentLocation()!)
-				print(weather)
+				try await weatherItViewModule.getCurrentWeather()
+				print(weatherItViewModule.currentWeather)
 			} catch	{
 				print(error)
 			}
@@ -34,16 +33,18 @@ struct WeatherItView: View {
 }
 
 #Preview {
-	WeatherItView()
+	var configuration = Configuration()
+	
+	WeatherItView().environmentObject(WeatherItViewModule(weatherClient: WeatherClient(baseUrl: configuration.environment.weatherBaseURL), locationService: LocationService())).environmentObject(ThemesManager())
 }
 
 struct HeaderView: View {
-	var headerImage: String
+	var headerImage: Image
 	var temp: String
 	var title: String
 	var body: some View {
 		ZStack {
-			Image(headerImage, bundle: .main).resizable().aspectRatio(
+			headerImage.resizable().aspectRatio(
 				contentMode: .fit
 			)
 			VStack(alignment: .center) {
