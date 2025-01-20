@@ -6,9 +6,8 @@
 //
 
 import Foundation
-// I will use this for the GeoCoding Client I will have that will be used to add favourite locations
-struct LocationModel {
-	let name: String
+// For the CoreLocation Data we get!
+struct Location {
 	let lat: Double
-	let long: Double
+	let lon: Double
 }
