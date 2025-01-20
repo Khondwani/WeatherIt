@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct WeatherItView: View {
+	var weatherClient: WeatherClient = WeatherClient()
+	var locationService: LocationService = LocationService()
 	var body: some View {
 
 		VStack {
@@ -16,7 +18,17 @@ struct WeatherItView: View {
 			Divider().frame(height: 1).overlay(.white)
 			ForecastView().border(Color.red)
 			
-		}.background(Color.sunny).ignoresSafeArea(.all)
+			
+		}.background(Color.sunny).ignoresSafeArea(.all).task {
+			do {
+//				let weather = try await weatherClient.fetchWeatherByCityName(for:"Chililabombwe")
+				//Testing purposes
+				let weather = try await weatherClient.fetchForecastWeather(location: locationService.getCurrentLocation()!)
+				print(weather)
+			} catch	{
+				print(error)
+			}
+		}
 	}
 
 }
