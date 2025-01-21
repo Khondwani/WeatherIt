@@ -37,8 +37,10 @@ struct HeaderView: View {
 					).onChange(of: isItSeaTheme) {
 						if isItSeaTheme {
 							// set sea theme
+							themeManager.setTheme(SeaTheme())
 						} else {
 							// set forest theme
+							themeManager.setTheme(ForestTheme())
 						}
 					}
 			}.frame(maxWidth: .infinity, maxHeight: 260, alignment: .topTrailing).border(Color.white, width: 2)
