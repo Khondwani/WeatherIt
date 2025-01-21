@@ -12,6 +12,10 @@ struct SeaTheme: ThemeProtocol {
 	var rainyImage: Image = Image("sea_rainy")
 	var cloudyImage: Image = Image("sea_cloudy")
 	
+	var sunnyIconImage: Image = Image("ic-sunny")
+	var rainyIconImage: Image = Image("ic-rainy")
+	var cloudyIconImage: Image = Image("ic-cloudy")
+	
 	var sunnyThemeColor: Color = Color.seaSunny
 	var rainyThemeColor: Color = Color.rainy
 	var cloudyThemeColor: Color = Color.cloudy
@@ -35,6 +39,17 @@ struct SeaTheme: ThemeProtocol {
 				return rainyImage
 			case .Clouds:
 				return cloudyImage
+		}
+	}
+	
+	func getIcon(weather type: WeatherType) -> Image {
+		switch type {
+		case .Clear:
+			return sunnyIconImage
+		case .Rain:
+			return rainyIconImage
+		case .Clouds:
+			return cloudyIconImage
 		}
 	}
 }
