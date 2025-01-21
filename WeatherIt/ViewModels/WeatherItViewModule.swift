@@ -14,6 +14,7 @@ class WeatherItViewModule: ObservableObject {
 
 	let weatherClient: WeatherClient  // so that we are able to move the weatherClient
 	let locationServices: LocationService
+	
 	init(weatherClient: WeatherClient, locationService: LocationService) {
 		self.weatherClient = weatherClient
 		self.locationServices = locationService

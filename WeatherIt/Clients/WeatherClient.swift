@@ -21,8 +21,8 @@ class WeatherClient {
 		self.baseUrl = baseUrl
 	}
 	
-	func fetchCurrentWeather(location: Location) async throws -> CurrentWeatherResponse? {
-		guard let url = URL(string: APIEndpoints.currentWeatherByCoordinates(location.lat, location.lon).path, relativeTo: baseUrl) else {
+	func fetchCurrentWeather(location: Location?) async throws -> CurrentWeatherResponse? {
+		guard let url = URL(string: APIEndpoints.currentWeatherByCoordinates(location?.lat ?? 0, location?.lon ?? 0).path, relativeTo: baseUrl) else {
 			throw APIError.invalidURL
 		}
 		
@@ -43,8 +43,8 @@ class WeatherClient {
 		return weather
 	}
 	
-	func fetchForecastWeather(location: Location) async throws -> ForecastWeatherResponse? {
-		guard let url = URL(string: APIEndpoints.forecastWeatherByCoordinates(location.lat, location.lon).path, relativeTo: baseUrl) else {
+	func fetchForecastWeather(location: Location?) async throws -> ForecastWeatherResponse? {
+		guard let url = URL(string: APIEndpoints.forecastWeatherByCoordinates(location?.lat ?? 0, location?.lon ?? 0).path, relativeTo: baseUrl) else {
 			throw APIError.invalidURL
 		}
 		
