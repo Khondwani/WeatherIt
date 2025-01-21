@@ -11,8 +11,9 @@ struct ForecastWeatherResponse: Decodable {
 	let list: [ForecastDayDetails]
 }
 
-struct ForecastDayDetails: Decodable {
-	let dt_txt: String
+struct ForecastDayDetails: Decodable
+{
+	let dt_txt: String // USE THIS AS MY ID
 	let main: WeatherDetails
 	let weather: [WeatherDescription]
 }
