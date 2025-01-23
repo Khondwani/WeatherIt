@@ -19,18 +19,13 @@ struct WeatherItView: View {
 			Divider().frame(height: 1).overlay(.white)
 			ForecastListView()
 			
-			
-		}.background(themeManager.currentTheme.getColor(weather: weatherItViewModule.getCurrentWeatherType() )).ignoresSafeArea(.all).task {
-			do {
-				
-				try await weatherItViewModule.getCurrentWeather()
-				try await weatherItViewModule.getForecastWeather()
-
-				
-			} catch	{
-				print(error)
+		}.alert("Important!", isPresented: $weatherItViewModule.isLocationNotAvailable, actions: {
+			Button("Go To Settings", role: .cancel) {
+				weatherItViewModule.openAppSettings()
 			}
-		}
+		},message: {
+				Text("Location services are required to use this app. Please go to settings then click on Privacy > Location Services > WeatherIt and change the status to Allow")
+		}).background(themeManager.currentTheme.getColor(weather: weatherItViewModule.getCurrentWeatherType() )).ignoresSafeArea(.all)
 	}
 
 }
@@ -38,7 +33,7 @@ struct WeatherItView: View {
 #Preview {
 	var configuration = Configuration()
 	
-	WeatherItView().environmentObject(WeatherItViewModule(weatherClient: WeatherClient(baseUrl: configuration.environment.weatherBaseURL), locationService: LocationService())).environmentObject(ThemesManager())
+	WeatherItView().environmentObject(WeatherItViewModule( weatherRepository: WeatherRepositoryImpl(weatherClient: WeatherClient(baseUrl: configuration.environment.weatherBaseURL), locationServices: LocationService()))).environmentObject(ThemesManager())
 }
 
 

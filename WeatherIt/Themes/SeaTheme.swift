@@ -17,8 +17,8 @@ struct SeaTheme: ThemeProtocol {
 	var cloudyIconImage: Image = Image("ic-cloudy")
 	
 	var sunnyThemeColor: Color = Color.seaSunny
-	var rainyThemeColor: Color = Color.rainy
-	var cloudyThemeColor: Color = Color.cloudy
+	var rainyThemeColor: Color = Color.seaRainy
+	var cloudyThemeColor: Color = Color.seaCloudy
 	
 	func getColor(weather type: WeatherType) -> Color {
 		switch type {

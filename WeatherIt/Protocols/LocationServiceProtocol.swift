@@ -12,7 +12,6 @@ protocol LocationServiceProtocol {
 	
 	func setupLocationServices()
 	func requestWhenInUseAuthorization()
-	func getCurrentLocation() -> Location?
 	func getAuthorizationStatus() -> CLAuthorizationStatus
 	
 }

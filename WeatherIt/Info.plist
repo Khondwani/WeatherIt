@@ -4,7 +4,5 @@
 <dict>
 	<key>WEATHER_API_KEY</key>
 	<string>$(WEATHER_API_KEY)</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>WeatherIt would like to use your location for the following reason: To collect weather information about the current location you are in.</string>
 </dict>
 </plist>
