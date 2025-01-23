@@ -33,7 +33,7 @@ struct WeatherItView: View {
 #Preview {
 	var configuration = Configuration()
 	
-	WeatherItView().environmentObject(WeatherItViewModule( weatherRepository: WeatherRepositoryImpl(weatherClient: WeatherClient(baseUrl: configuration.environment.weatherBaseURL), locationServices: LocationService()))).environmentObject(ThemesManager())
+	WeatherItView().environmentObject(WeatherItViewModule( weatherRepository: WeatherRepositoryImpl(weatherClient: WeatherClient(baseUrl: configuration.environment.weatherBaseURL), locationServices: LocationService(), internetMonitorService: InternetMonitorService()))).environmentObject(ThemesManager())
 }
 
 

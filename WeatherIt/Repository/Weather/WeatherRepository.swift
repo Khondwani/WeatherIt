@@ -22,7 +22,7 @@ protocol WeatherRepository {
 	// NOTE: FOR EXTRA WORK
 	func getForecastWeatherWithCityName(_ cityName: String, completion: @escaping (Result<ForecastWeatherResponse, Error>) -> Void)
 	
-
-	
+	func checkIfInternetConnectionAvailable() -> Bool
+		
 }
 
