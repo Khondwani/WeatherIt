@@ -19,7 +19,7 @@ struct WeatherItApp: App {
 		let locationSerice = LocationService()
 		//Made it an environment object because It is a client that will be accesible on all screens.
 		let weatherClient = WeatherClient(baseUrl: configuration.environment.weatherBaseURL)
-		_weatherItViewModule = StateObject(wrappedValue: WeatherItViewModule(weatherClient: weatherClient, locationService: locationSerice))
+		_weatherItViewModule = StateObject(wrappedValue: WeatherItViewModule( weatherRepository:  WeatherRepositoryImpl(weatherClient: weatherClient, locationServices: locationSerice)))
 	}
 	
     var body: some Scene {

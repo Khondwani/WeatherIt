@@ -6,41 +6,81 @@
 //
 
 import Foundation
+import Combine
+import CoreLocation
+import SwiftUI
 
 @MainActor
 class WeatherItViewModule: ObservableObject {
 	@Published private(set) var currentWeather: CurrentWeatherResponse? = nil
 	@Published private(set) var forecastWeather: [ForecastDayDetails]? = []
-
-	let weatherClient: WeatherClient  // so that we are able to move the weatherClient
-	let locationServices: LocationService
+	@Published var isLocationNotAvailable: Bool = false // by default
 	
-	init(weatherClient: WeatherClient, locationService: LocationService) {
-		self.weatherClient = weatherClient
-		self.locationServices = locationService
+	private let weatherRepository: WeatherRepository
+	
+	init( weatherRepository: WeatherRepository) {
+		self.weatherRepository = weatherRepository
+		getCurrentWeatherWithForecastWeather()
 	}
+	
 	// business logic
-	func getCurrentWeather() async throws {
-		currentWeather = try await weatherClient.fetchCurrentWeather(
-			location: locationServices.getCurrentLocation()!)
+	func getCurrentWeatherWithForecastWeather() {
+		Task {
+			do {
+				try await weatherRepository.getCurrentWeatherWithCurrentLocation { [weak self] result in
+					   switch result {
+						   case .success(let currentWeather):
+							   DispatchQueue.main.async {
+								   self?.isLocationNotAvailable = false
+								   self?.currentWeather = currentWeather
+								   self?.getForecastWeather()
+							   }
+						   case .failure(let error):
+							   if error.self  is LocationAuthorizationError {
+								   DispatchQueue.main.async {
+									   self?.isLocationNotAvailable = true
+								   }
+							   }
+					   }
+			   }
+			} catch
+				{
+				print(error)
+			}
+		}
 	}
 
-	func getForecastWeather() async throws {
-		let forecastWeatherList = try await weatherClient.fetchForecastWeather(
-			location: locationServices.getCurrentLocation()!)
-		// We only get the next 5 dates after current date. We also consider the time,
-		// So if its 12:30 we get the time 12:00:00, if its 13:00:00 we also get 12:00:00
-		let date = Date()
-		
-		let filteredForecastWeatherList = removeTodaysForecastWeather(
-			list: forecastWeatherList!.list,
-			today: DateFormatter.stringYYYYMMddDash(from: date))
+	func getForecastWeather() {
+		Task {
+			do {
+				try await weatherRepository.getForecastWeatherWithCurrentLocation { [weak self] result in
+					switch result {
+						case .success(let forecastWeather):
+							DispatchQueue.main.async {
+									// We only get the next 5 dates after current date. We also consider the time,
+									// So if its 12:30 we get the time 12:00:00, if its 13:00:00 we also get 12:00:00
+									let date = Date()
+									
+								let filteredForecastWeatherList = self?.removeTodaysForecastWeather(
+										list: forecastWeather.list,
+										today: DateFormatter.stringYYYYMMddDash(from: date))
 
-		
-		let timeString = DateFormatter.stringHHmmssColon(from: date)//timeDateFormatter.string(from: date)
+									
+									let timeString = DateFormatter.stringHHmmssColon(from: date)//timeDateFormatter.string(from: date)
 
-		forecastWeather = getForecastWeatherListBasedOnTime(
-			list: filteredForecastWeatherList, currentTime: timeString)
+								self?.forecastWeather = self?.getForecastWeatherListBasedOnTime(
+									list: filteredForecastWeatherList!, currentTime: timeString)
+							}
+						case .failure(let error):
+							print("Error: \(error)")
+					}
+				}
+			} catch {
+				print(error)
+			}
+		}
+		
+		
 	}
 
 	private func removeTodaysForecastWeather(
@@ -133,6 +173,14 @@ class WeatherItViewModule: ObservableObject {
 		}
 		return String(format: "%.f", currentWeather.main.temp_max)
 	}
+	
+	func openAppSettings() {
+		// Works well on a physical device simulators xcode bug openning blank screen
+		if let url = URL(string: UIApplication.openSettingsURLString) {
+			UIApplication.shared.open(url)
+		}
+	}
+	
 }
 
 

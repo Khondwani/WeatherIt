@@ -7,21 +7,21 @@
 
 import Foundation
 
-struct ForecastWeatherResponse: Decodable {
+struct ForecastWeatherResponse: Codable {
 	let list: [ForecastDayDetails]
 }
 
-struct ForecastDayDetails: Decodable
+struct ForecastDayDetails: Codable
 {
 	let dt_txt: String // USE THIS AS MY ID
 	let main: WeatherDetails
 	let weather: [WeatherDescription]
 }
 
-struct WeatherDetails: Decodable {
+struct WeatherDetails: Codable {
 	let temp: Double
 }
 
-struct WeatherDescription: Decodable {
+struct WeatherDescription: Codable {
 	let main: WeatherType
 }
