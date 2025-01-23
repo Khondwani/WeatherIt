@@ -25,6 +25,6 @@ struct CurrentWeatherView: View {
 	var configuration = Configuration()
 	WeatherItView().environmentObject(
 		WeatherItViewModule(
-			 weatherRepository: WeatherRepositoryImpl(weatherClient: WeatherClient(baseUrl: configuration.environment.weatherBaseURL), locationServices: LocationService()))
+			weatherRepository: WeatherRepositoryImpl(weatherClient: WeatherClient(baseUrl: configuration.environment.weatherBaseURL), locationServices: LocationService(), internetMonitorService: InternetMonitorService()))
 	).environmentObject(ThemesManager())
 }

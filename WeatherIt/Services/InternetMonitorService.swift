@@ -8,7 +8,7 @@
 import Foundation
 import Network
 
-class InternetMonitorService : ObservableObject {
+class InternetMonitorService : ObservableObject, InternetMonitorServiceProtocol {
 	private let internetMonitor = NWPathMonitor()
 	private let workerQueue = DispatchQueue(label: "InternetMonitoring")
 	@Published var isInternetAvailable = false
@@ -17,7 +17,7 @@ class InternetMonitorService : ObservableObject {
 		setupInternetMonitor()
 	}
 	
-	private func setupInternetMonitor() {
+	func setupInternetMonitor() {
 		internetMonitor.pathUpdateHandler = { path in
 			if path.status == .satisfied {
 				self.isInternetAvailable = true
@@ -26,5 +26,9 @@ class InternetMonitorService : ObservableObject {
 			}
 		}
 		internetMonitor.start(queue: workerQueue)
+	}
+	
+	func getInternetAvailability() -> Bool {
+		return isInternetAvailable
 	}
 }

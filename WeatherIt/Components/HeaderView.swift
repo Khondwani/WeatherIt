@@ -10,7 +10,7 @@ import SwiftUI
 struct HeaderView: View {
 	@EnvironmentObject private var themeManager: ThemesManager
 	@EnvironmentObject private var weatherItViewModule: WeatherItViewModule
-
+	
 	@State private var isItSeaTheme: Bool = false
 	var body: some View {
 		ZStack(alignment: .top) {
@@ -56,5 +56,5 @@ struct HeaderView: View {
 
 	WeatherItView().environmentObject(
 		WeatherItViewModule(
-			 weatherRepository: WeatherRepositoryImpl(weatherClient: WeatherClient(baseUrl: configuration.environment.weatherBaseURL), locationServices: LocationService()))).environmentObject(ThemesManager())
+			 weatherRepository: WeatherRepositoryImpl(weatherClient: WeatherClient(baseUrl: configuration.environment.weatherBaseURL), locationServices: LocationService(), internetMonitorService: InternetMonitorService()))).environmentObject(ThemesManager())
 }

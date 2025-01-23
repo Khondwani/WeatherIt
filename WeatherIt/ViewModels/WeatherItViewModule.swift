@@ -15,6 +15,10 @@ class WeatherItViewModule: ObservableObject {
 	@Published private(set) var currentWeather: CurrentWeatherResponse? = nil
 	@Published private(set) var forecastWeather: [ForecastDayDetails]? = []
 	@Published var isLocationNotAvailable: Bool = false // by default
+	@Published var isInternetAvailable: Bool = true // variable will be updated by the publisher for combine
+	// For the publisher for internet connectivity
+	
+	private(set) var cancellables = Set<AnyCancellable>()
 	
 	private let weatherRepository: WeatherRepository
 	
@@ -180,7 +184,6 @@ class WeatherItViewModule: ObservableObject {
 			UIApplication.shared.open(url)
 		}
 	}
-	
 }
 
 
