@@ -1,5 +1,5 @@
 //
-//  WeatherItViewModule.swift
+//  WeatherItViewModel.swift
 //  WeatherIt
 //
 //  Created by Khondwani Sikasote on 2025/01/20.
@@ -11,11 +11,13 @@ import CoreLocation
 import SwiftUI
 
 @MainActor
-class WeatherItViewModule: ObservableObject {
+class WeatherItViewModel: ObservableObject {
 	@Published private(set) var currentWeather: CurrentWeatherResponse? = nil
 	@Published private(set) var forecastWeather: [ForecastDayDetails]? = []
 	@Published var isLocationNotAvailable: Bool = false // by default
-	@Published var isInternetAvailable: Bool = true // variable will be updated by the publisher for combine
+	@Published var isInternetAvailable: Bool = true // variable will be updated by the
+	@Published var isLoadingCurrentWeather: Bool = false
+	@Published var isLoadingForecastWeather: Bool = false
 	// For the publisher for internet connectivity
 	
 	private(set) var cancellables = Set<AnyCancellable>()
@@ -29,6 +31,8 @@ class WeatherItViewModule: ObservableObject {
 	
 	// business logic
 	func getCurrentWeatherWithForecastWeather() {
+		isLoadingCurrentWeather = true
+		isLoadingForecastWeather = true
 		Task {
 			do {
 				try await weatherRepository.getCurrentWeatherWithCurrentLocation { [weak self] result in
@@ -36,12 +40,17 @@ class WeatherItViewModule: ObservableObject {
 						   case .success(let currentWeather):
 							   DispatchQueue.main.async {
 								   self?.isLocationNotAvailable = false
+								   self?.isLoadingCurrentWeather = true
+								 
 								   self?.currentWeather = currentWeather
 								   self?.getForecastWeather()
 							   }
 						   case .failure(let error):
+							
 							   if error.self  is LocationAuthorizationError {
 								   DispatchQueue.main.async {
+									   self?.isLoadingCurrentWeather = false
+									   self?.isLoadingForecastWeather = false
 									   self?.isLocationNotAvailable = true
 								   }
 							   }
@@ -49,6 +58,8 @@ class WeatherItViewModule: ObservableObject {
 			   }
 			} catch
 				{
+				isLoadingCurrentWeather = false
+				isLoadingForecastWeather = false
 				print(error)
 			}
 		}
@@ -63,6 +74,7 @@ class WeatherItViewModule: ObservableObject {
 							DispatchQueue.main.async {
 									// We only get the next 5 dates after current date. We also consider the time,
 									// So if its 12:30 we get the time 12:00:00, if its 13:00:00 we also get 12:00:00
+								self?.isLoadingForecastWeather = false
 									let date = Date()
 									
 								let filteredForecastWeatherList = self?.removeTodaysForecastWeather(
@@ -76,6 +88,9 @@ class WeatherItViewModule: ObservableObject {
 									list: filteredForecastWeatherList!, currentTime: timeString)
 							}
 						case .failure(let error):
+							DispatchQueue.main.async {
+								self?.isLoadingForecastWeather = false
+							}
 							print("Error: \(error)")
 					}
 				}
@@ -140,7 +155,7 @@ class WeatherItViewModule: ObservableObject {
 		guard let currentWeather = currentWeather else {
 			return "-"
 		}
-		return String(format: "%.f", currentWeather.main.temp)  // no decimals
+		return "\(Int(currentWeather.main.temp))"  // no decimals
 	}
 
 	func getCurrentWeatherType() -> WeatherType {
@@ -168,14 +183,14 @@ class WeatherItViewModule: ObservableObject {
 		guard let currentWeather = currentWeather else {
 			return "-"
 		}
-		return String(format: "%.f", currentWeather.main.temp_min)
+		return "\(Int(currentWeather.main.temp_min))"
 	}
 
 	func getCurrentWeatherMaxTemp() -> String {
 		guard let currentWeather = currentWeather else {
 			return "-"
 		}
-		return String(format: "%.f", currentWeather.main.temp_max)
+		return "\(Int(currentWeather.main.temp_max))"
 	}
 	
 	func openAppSettings() {

@@ -30,7 +30,7 @@ class WeatherRepositoryImpl: WeatherRepository {
 	private var userDefaults: UserDefaults = .standard
 	private let encoder = JSONEncoder()
 	private let decoder = JSONDecoder()
-	@EnvironmentObject private var internetMonitor: InternetMonitorService
+
 
 	var location: Published<Location?>.Publisher {
 		locationServices.$location
@@ -164,22 +164,6 @@ class WeatherRepositoryImpl: WeatherRepository {
 				completion(.failure(error))
 			}
 		}
-	}
-
-	func getForecastWeatherWithCityName(
-		_ cityName: String,
-		completion: @escaping (Result<ForecastWeatherResponse, any Error>) ->
-			Void
-	) {
-
-	}
-
-	func getCurrentWeatherWithCityName(
-		_ cityName: String,
-		completion: @escaping (Result<CurrentWeatherResponse, any Error>) ->
-			Void
-	) {
-
 	}
 
 	func checkIfInternetConnectionAvailable() -> Bool {

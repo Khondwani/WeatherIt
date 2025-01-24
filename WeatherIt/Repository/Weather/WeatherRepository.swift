@@ -15,12 +15,8 @@ protocol WeatherRepository {
 	func saveCurrentForecastWeather(forecastWeather: ForecastWeatherResponse) async throws
 	
 	func getCurrentWeatherWithCurrentLocation(completion: @escaping (Result<CurrentWeatherResponse, Error>) -> Void) async throws
-	// NOTE: FOR EXTRA WORK
-	func getCurrentWeatherWithCityName(_ cityName: String, completion: @escaping (Result<CurrentWeatherResponse, Error>) -> Void)
 
 	func getForecastWeatherWithCurrentLocation(completion: @escaping (Result<ForecastWeatherResponse, Error>) -> Void) async throws
-	// NOTE: FOR EXTRA WORK
-	func getForecastWeatherWithCityName(_ cityName: String, completion: @escaping (Result<ForecastWeatherResponse, Error>) -> Void)
 	
 	func checkIfInternetConnectionAvailable() -> Bool
 		

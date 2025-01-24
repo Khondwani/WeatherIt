@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct CurrentWeatherView: View {
-	@EnvironmentObject private var weatherItViewModule: WeatherItViewModule
+	@EnvironmentObject private var WeatherItViewModel: WeatherItViewModel
 	var body: some View {
 		HStack {
-			CurrentWeatherDetailsView(temp: weatherItViewModule.getCurrentWeatherMinTemp(), title: "min").frame(maxWidth: .infinity, alignment: .leading)
+			CurrentWeatherDetailsView(temp: WeatherItViewModel.getCurrentWeatherMinTemp(), title: "min").frame(maxWidth: .infinity, alignment: .leading)
 			
-			CurrentWeatherDetailsView(temp: weatherItViewModule.getCurrentTemp(), title: "Current")
+			CurrentWeatherDetailsView(temp: WeatherItViewModel.getCurrentTemp(), title: "Current")
 			
-			CurrentWeatherDetailsView(temp: weatherItViewModule.getCurrentWeatherMaxTemp(), title: "max").frame(maxWidth: .infinity, alignment: .trailing)
+			CurrentWeatherDetailsView(temp: WeatherItViewModel.getCurrentWeatherMaxTemp(), title: "max").frame(maxWidth: .infinity, alignment: .trailing)
 			
 		}.padding(.horizontal ,16.0)
 	}
@@ -24,7 +24,7 @@ struct CurrentWeatherView: View {
 #Preview {
 	var configuration = Configuration()
 	WeatherItView().environmentObject(
-		WeatherItViewModule(
+		WeatherItViewModel(
 			weatherRepository: WeatherRepositoryImpl(weatherClient: WeatherClient(baseUrl: configuration.environment.weatherBaseURL), locationServices: LocationService(), internetMonitorService: InternetMonitorService()))
 	).environmentObject(ThemesManager())
 }
