@@ -9,21 +9,22 @@ import SwiftUI
 
 struct HeaderView: View {
 	@EnvironmentObject private var themeManager: ThemesManager
-	@EnvironmentObject private var weatherItViewModule: WeatherItViewModule
+	@EnvironmentObject private var weatherItViewModel: WeatherItViewModel
 	
 	@State private var isItSeaTheme: Bool = false
 	var body: some View {
+		
 		ZStack(alignment: .top) {
 			themeManager.currentTheme.getImage(
-				weather: weatherItViewModule.getCurrentWeatherType()
+				weather: weatherItViewModel.getCurrentWeatherType()
 			).resizable().aspectRatio(
 				contentMode: .fit
 			)
 			VStack(alignment: .center) {
-				Text("\(weatherItViewModule.getCurrentTemp())°").font(
+				Text("\(weatherItViewModel.getCurrentTemp())°").font(
 					.system(size: 60)
 				).foregroundColor(.white)
-				Text(weatherItViewModule.getCurrentWeatherTitle().uppercased())
+				Text(weatherItViewModel.getCurrentWeatherTitle().uppercased())
 					.font(.system(size: 30)).tracking(2)
 					.fontWeight(.medium).foregroundColor(.white)
 			}.padding(.top, 100)
@@ -55,6 +56,6 @@ struct HeaderView: View {
 	var configuration = Configuration()
 
 	WeatherItView().environmentObject(
-		WeatherItViewModule(
+		WeatherItViewModel(
 			 weatherRepository: WeatherRepositoryImpl(weatherClient: WeatherClient(baseUrl: configuration.environment.weatherBaseURL), locationServices: LocationService(), internetMonitorService: InternetMonitorService()))).environmentObject(ThemesManager())
 }

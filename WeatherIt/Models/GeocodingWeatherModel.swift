@@ -7,14 +7,11 @@
 import Foundation
 
 // I will use this for the Weather Client I will have that will be used to add favourite locations by search by City
+typealias City = GeoCodingWeatherResponse
+
 struct GeoCodingWeatherResponse: Codable {
 	let name: String
-	let coord: Coordinates
+	let coord: Location
 	let weather: [WeatherDescription]
-	let main: WeatherDetails
-}
-
-struct Coordinates: Codable {
-	let lon: Double
-	let lat: Double
+	let main: CurrentWeather
 }

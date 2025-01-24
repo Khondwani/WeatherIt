@@ -7,7 +7,7 @@
 
 import Foundation
 // For the CoreLocation Data we get!
-struct Location {
+struct Location: Codable {
 	let lat: Double
 	let lon: Double
 }
