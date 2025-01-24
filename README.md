@@ -5,14 +5,14 @@ This document outlines the development journey of WeatherIT, detailing the appro
 ## Day 1 & 2: Planning and Structuring
 
 The first two days were dedicated to brainstorming and planning. During this phase, I structured the project around the **MVVM (Model-View-ViewModel) pattern**, paired with the **Repository pattern**. This combination was chosen for its ability to separate concerns and ensure modularity and testability.
-![Day 1 Planning](./ReadMeAssets/Day%201.png)
-![Day 1 & 2 Planning](./ReadMeAssets/Day%201%20&%202%20System%20Design.png)
+![Day 1 Planning](./ReadMeAssets/Day%201%20.png)
+![Day 1 & 2 Planning](./ReadMeAssets/Day%201-2%20System%20Design.png)
 
 ## Day 3: UI Layout and Repository Implementation
 
 On the third day, I began building the application's **UI layouts** before adding functionality. This allowed me to focus on creating an intuitive user interface. Simultaneously, I implemented the **Repository pattern**, which highlights its benefits by clearly separating the Data layer from the Business Logic layer.
 
-![Day 3 UI and Repository](./ReadMeAssets/Day%203.png)
+![Day 3 UI and Repository](./ReadMeAssets/Day3.png)
 
 ## Day 4: API Integration and Testing
 
@@ -38,7 +38,7 @@ During the last two days, I focused on:
 
 Below is the final project mapping, summarizing how the application was built and the integration of different components:
 
-![Final Project Mapping](./ReadMeAssets/FinalView.png)
+![Final Project Mapping](./ReadMeAssets/FinalDay.png)
 
 ## Notes and Recommendations
 
