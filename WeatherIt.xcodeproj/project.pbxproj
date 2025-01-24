@@ -26,6 +26,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		74EA403F2D43F38700834384 /* ReadMeAssets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ReadMeAssets;
+			sourceTree = "<group>";
+		};
 		74F6427A2D3C4EA800FF86FE /* WeatherIt */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -50,6 +55,7 @@
 		74F6426F2D3C4EA800FF86FE = {
 			isa = PBXGroup;
 			children = (
+				74EA403F2D43F38700834384 /* ReadMeAssets */,
 				74F642BB2D3E5C3500FF86FE /* Config.xcconfig */,
 				74F6427A2D3C4EA800FF86FE /* WeatherIt */,
 				74F642792D3C4EA800FF86FE /* Products */,
@@ -80,6 +86,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				74EA403F2D43F38700834384 /* ReadMeAssets */,
 				74F6427A2D3C4EA800FF86FE /* WeatherIt */,
 			);
 			name = WeatherIt;
