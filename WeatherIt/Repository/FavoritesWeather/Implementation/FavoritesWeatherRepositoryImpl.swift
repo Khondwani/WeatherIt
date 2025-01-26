@@ -7,13 +7,6 @@
 
 import Foundation
 import SwiftUI
-enum InternetAvailabilityError: Error {
-	case internetUnavailable
-}
-
-enum PersistenceError: Error {
-	case itemNotFound
-}
 
 class FavoritesWeatherRepositoryImpl: FavoritesWeatherRepository {
 	
@@ -76,8 +69,7 @@ class FavoritesWeatherRepositoryImpl: FavoritesWeatherRepository {
 		Task {
 			do {
 				let currentFavoriteCityWeather = try await self
-					.weatherClient.fetchCurrentWeather(
-						location: location)
+					.weatherClient.fetchCurrentWeather(location: location)
 				
 				try await updateFavoriteWeather(cityName: cityName,favoriteWeather: currentFavoriteCityWeather!)
 				

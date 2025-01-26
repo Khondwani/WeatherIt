@@ -7,14 +7,9 @@
 
 import Foundation
 
-enum APIError: Error {
-	case invalidURL
-	case invalidRequest
-	case invalidResponse
-	case decodingError
-}
 
-class WeatherClient {
+
+class WeatherClient: WeatherClientProtocol {
 	private var baseUrl: URL
 	
 	init(baseUrl: URL) {

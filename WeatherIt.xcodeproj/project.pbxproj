@@ -10,7 +10,18 @@
 		74F642BC2D3E5C3500FF86FE /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 74F642BB2D3E5C3500FF86FE /* Config.xcconfig */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		740328AF2D46BF280019E7A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 74F642702D3C4EA800FF86FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 74F642772D3C4EA800FF86FE;
+			remoteInfo = WeatherIt;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		740328AB2D46BF280019E7A2 /* WeatherItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F642782D3C4EA800FF86FE /* WeatherIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74F642BB2D3E5C3500FF86FE /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -26,6 +37,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		740328AC2D46BF280019E7A2 /* WeatherItTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WeatherItTests;
+			sourceTree = "<group>";
+		};
 		74EA403F2D43F38700834384 /* ReadMeAssets */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ReadMeAssets;
@@ -42,6 +58,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		740328A82D46BF280019E7A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		74F642752D3C4EA800FF86FE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,6 +81,7 @@
 				74EA403F2D43F38700834384 /* ReadMeAssets */,
 				74F642BB2D3E5C3500FF86FE /* Config.xcconfig */,
 				74F6427A2D3C4EA800FF86FE /* WeatherIt */,
+				740328AC2D46BF280019E7A2 /* WeatherItTests */,
 				74F642792D3C4EA800FF86FE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				74F642782D3C4EA800FF86FE /* WeatherIt.app */,
+				740328AB2D46BF280019E7A2 /* WeatherItTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +98,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		740328AA2D46BF280019E7A2 /* WeatherItTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 740328B12D46BF280019E7A2 /* Build configuration list for PBXNativeTarget "WeatherItTests" */;
+			buildPhases = (
+				740328A72D46BF280019E7A2 /* Sources */,
+				740328A82D46BF280019E7A2 /* Frameworks */,
+				740328A92D46BF280019E7A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				740328B02D46BF280019E7A2 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				740328AC2D46BF280019E7A2 /* WeatherItTests */,
+			);
+			name = WeatherItTests;
+			packageProductDependencies = (
+			);
+			productName = WeatherItTests;
+			productReference = 740328AB2D46BF280019E7A2 /* WeatherItTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		74F642772D3C4EA800FF86FE /* WeatherIt */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 74F642862D3C4EAA00FF86FE /* Build configuration list for PBXNativeTarget "WeatherIt" */;
@@ -106,6 +154,10 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					740328AA2D46BF280019E7A2 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 74F642772D3C4EA800FF86FE;
+					};
 					74F642772D3C4EA800FF86FE = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -126,11 +178,19 @@
 			projectRoot = "";
 			targets = (
 				74F642772D3C4EA800FF86FE /* WeatherIt */,
+				740328AA2D46BF280019E7A2 /* WeatherItTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		740328A92D46BF280019E7A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		74F642762D3C4EA800FF86FE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -142,6 +202,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		740328A72D46BF280019E7A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		74F642742D3C4EA800FF86FE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -151,7 +218,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		740328B02D46BF280019E7A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 74F642772D3C4EA800FF86FE /* WeatherIt */;
+			targetProxy = 740328AF2D46BF280019E7A2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		740328B22D46BF280019E7A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A5B3DVRDCJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kactusit..WeatherItTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeatherIt.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WeatherIt";
+			};
+			name = Debug;
+		};
+		740328B32D46BF280019E7A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A5B3DVRDCJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kactusit..WeatherItTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeatherIt.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WeatherIt";
+			};
+			name = Release;
+		};
 		74F642842D3C4EAA00FF86FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 74F642BB2D3E5C3500FF86FE /* Config.xcconfig */;
@@ -348,6 +459,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		740328B12D46BF280019E7A2 /* Build configuration list for PBXNativeTarget "WeatherItTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				740328B22D46BF280019E7A2 /* Debug */,
+				740328B32D46BF280019E7A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		74F642732D3C4EA800FF86FE /* Build configuration list for PBXProject "WeatherIt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
