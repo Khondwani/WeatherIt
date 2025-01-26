@@ -1,6 +1,12 @@
 # WeatherIT: Brainstorming and Planning
 
-This document outlines the development journey of WeatherIT, detailing the approach, patterns, and methodologies adopted during the project.
+This document outlines the development journey of WeatherIT, detailing the approach, patterns, and methodologies adopted during the project. This process is basically an iterative process up until the final goal is achieved.
+
+## Notes and Recommendations
+
+- **API Key Security:** Place the API key in a `Constants` file under the `Utilities` folder, or use a `Config` file for added security. I opted for the `Config` file approach.
+- **Data Storage:** Data is currently stored in `UserDefaults`. However, with the **Repository pattern**, the data layer can be easily swapped out for alternatives like **Core Data** or **Swift Data** by implementing conforming repositories.
+- **Testing:** The tests that where written where to show the benefit of using the repository pattern and how easy it is to swap out the type of data layer that is being used. This shows that the Business Logic does not need to know anything or how the data is being stored or where it is coming from.
 
 ## Day 1 & 2: Planning and Structuring
 
@@ -30,8 +36,6 @@ During the last two days, I focused on:
 - Fixing small UI issues to enhance the application's visual appeal and usability.
 - Ensuring that the **MVVM** and **Repository** patterns were properly implemented, with all components used correctly and cohesively.
 
-![Day 5 Refinements](./ReadMeAssets/Day%205.png)
-![Day 6 Refinements](./ReadMeAssets/Day%206.png)
 ![Day 7 Refinements](./ReadMeAssets/Day%206%20&%207.png)
 
 ## Final Project Mapping
@@ -40,8 +44,4 @@ Below is the final project mapping, summarizing how the application was built an
 
 ![Final Project Mapping](./ReadMeAssets/FinalDay.png)
 
-## Notes and Recommendations
-
-- **API Key Security:** Place the API key in a `Constants` file under the `Utilities` folder, or use a `Config` file for added security. I opted for the `Config` file approach.
-- **Data Storage:** Data is currently stored in `UserDefaults`. However, with the **Repository pattern**, the data layer can be easily swapped out for alternatives like **Core Data** or **Swift Data** by implementing conforming repositories.
 
