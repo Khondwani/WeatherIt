@@ -53,17 +53,9 @@ struct FloatingActionButton: View {
 		}.navigationDestination(for: NavigationPaths.self) { paths in
 			switch paths {
 			case .Favorites:
-
-				LazyView {
-
-					FavoritesView()
-				}
+				FavoritesView()
 			case .Map:
-
-				LazyView {
-
-					FavoritesMapView()
-				}
+				FavoritesMapView()
 			}
 
 		}.onDisappear {
