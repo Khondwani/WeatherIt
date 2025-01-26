@@ -1,6 +1,6 @@
 # WeatherIT
 
-![Final Application](https://github.com/Khondwani/WeatherIt/raw/refs/heads/main/ReadMeAssets/Recording.mp4)
+[![Watch the video](./ReadMeAssets/thumbnail.png)]([https://raw.githubusercontent.com/username/repository/branch/path/to/video.mp4](https://github.com/Khondwani/WeatherIt/blame/e8f27cf1a58a4829bcfd38bd2541bc3452f097f3/ReadMeAssets/Recording.mp4))
 
 # WeatherIT: Brainstorming and Planning
 
