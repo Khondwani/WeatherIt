@@ -138,6 +138,17 @@ class FavoritesViewModel: ObservableObject {
 		}
 	}
 	
+	func getMarkerIcon(weatherType: WeatherType) -> String {
+		switch weatherType {
+			case .Clear:
+				return "ic-sunny"
+			case .Clouds:
+				return "ic-cloudy"
+			case .Rain:
+				return "ic-rainy"
+		}
+	}
+	
 	func getSearchedCityWeatherMinTemp() -> String {
 		guard let searchedCityWeather = searchedCityWeather else {
 			return "-"
