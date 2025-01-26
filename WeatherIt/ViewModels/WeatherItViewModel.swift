@@ -22,7 +22,7 @@ class WeatherItViewModel: ObservableObject {
 	
 	private(set) var cancellables = Set<AnyCancellable>()
 	
-	private let weatherRepository: WeatherRepository
+	let weatherRepository: WeatherRepository
 	
 	init( weatherRepository: WeatherRepository) {
 		self.weatherRepository = weatherRepository

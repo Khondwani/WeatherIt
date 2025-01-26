@@ -10,17 +10,6 @@ import CoreLocation
 import Foundation
 import SwiftUICore
 
-enum LocationAuthorizationError: Error {
-	case locationServicesDisabled
-}
-
-enum CacheUserDefaultError: Error {
-	case unableToEncode
-	case unableToDecode
-	case unableToSave
-	case unableToRetrieve
-}
-
 class WeatherRepositoryImpl: WeatherRepository {
 
 	private let weatherClient: WeatherClient
