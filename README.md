@@ -1,3 +1,7 @@
+# WeatherIT
+
+![Final Application](./ReadMeAssets/Recording.mp4)
+
 # WeatherIT: Brainstorming and Planning
 
 This document outlines the development journey of WeatherIT, detailing the approach, patterns, and methodologies adopted during the project. This process is basically an iterative process up until the final goal is achieved.
@@ -6,7 +10,7 @@ This document outlines the development journey of WeatherIT, detailing the appro
 
 - **API Key Security:** Place the API key in a `Constants` file under the `Utilities` folder, or use a `Config` file for added security. I opted for the `Config` file approach.
 - **Data Storage:** Data is currently stored in `UserDefaults`. However, with the **Repository pattern**, the data layer can be easily swapped out for alternatives like **Core Data** or **Swift Data** by implementing conforming repositories.
-- **Testing:** The tests that where written where to show the benefit of using the repository pattern and how easy it is to swap out the type of data layer that is being used. This shows that the Business Logic does not need to know anything or how the data is being stored or where it is coming from.
+- **Testing:** The tests that were written were to show the benefit of using the repository pattern and how easy it is to swap out the type of data layer that is being used. This shows that business Logic does not need to know anything about how the data is being stored or where it is coming from.
 
 ## Day 1 & 2: Planning and Structuring
 
